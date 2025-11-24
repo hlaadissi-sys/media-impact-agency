@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Marketing Agency - وكالة التسويق الرقمي العقاري</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 107, 0, 0.9);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle:hover {
+            background: rgba(255, 107, 0, 1);
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff6b00 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo-text {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .logo-text .media {
+            color: #ff6b00;
+        }
+
+        .logo-text .impact {
+            color: #1a1a1a;
+        }
+
+        .logo-text .agency {
+            color: #1a1a1a;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b00, #ff8c00);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.4);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b00;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+            border-color: #ff6b00;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b00, #1a1a1a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%);
+            padding: 100px 0;
+            color: white;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #1a1a1a, #333);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .case-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .case-image {
+            height: 200px;
+            background: linear-gradient(135deg, #ff6b00, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .case-content {
+            padding: 30px;
+        }
+
+        .case-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .case-results {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b00;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            color: white;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            margin-top: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b00, #ff8c00);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            padding: 60px 0 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ff6b00;
+        }
+
+        .social-links {
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff6b00;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .testimonial-grid,
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+
+            .logo-text {
+                font-size: 2rem;
+            }
+        }
+
+        /* French Layout Adjustments */
+        body.french {
+            direction: ltr;
+        }
+
+        body.french .hero-content,
+        body.french .section-title,
+        body.french .section-subtitle {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button class="language-toggle" onclick="toggleLanguage()">
+        <i class="fas fa-globe"></i> <span id="lang-text">Français</span>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <div class="logo-text">
+                    <span class="media">Impact</span> <span class="impact">Marketing</span> <span class="agency">Agency</span>
+                </div>
+            </div>
+            <h1 id="hero-title">الوكالة الرائدة في التسويق العقاري الرقمي</h1>
+            <p class="hero-subtitle" id="hero-subtitle">نحول مشاريعك العقارية إلى نجاحات استثنائية عبر فيسبوك، جوجل، تيك توك والمنصات الرقمية المتخصصة</p>
+            <a href="#contact" class="cta-button" id="hero-cta">احجز استشارتك المجانية الآن</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item fade-in">
+                <div class="stat-number">200+</div>
+                <div class="stat-label" id="stat1">مشروع عقاري ناجح</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">350%</div>
+                <div class="stat-label" id="stat2">متوسط زيادة الاستفسارات</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">50M+</div>
+                <div class="stat-label" id="stat3">درهم مبيعات عقارية</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">95%</div>
+                <div class="stat-label" id="stat4">معدل رضا المطورين</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="services-container">
+            <h2 class="section-title fade-in" id="services-title">خدماتنا العقارية المتخصصة</h2>
+            <p class="section-subtitle fade-in" id="services-subtitle">حلول تسويقية متكاملة مصممة خصيصاً لقطاع العقارات لتحقيق أعلى معدلات البيع والتأجير</p>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="service-title" id="service1-title">تسويق المشاريع السكنية</h3>
+                    <p class="service-description" id="service1-desc">حملات رقمية متكاملة لتسويق المجمعات السكنية والأبراج مع استهداف المشترين المحتملين بدقة</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 class="service-title" id="service2-title">العقارات التجارية</h3>
+                    <p class="service-description" id="service2-desc">استراتيجيات متخصصة لتسويق المحلات التجارية، المكاتب والمساحات الاستثمارية</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="service-title" id="service3-title">إدارة التأجير</h3>
+                    <p class="service-description" id="service3-desc">حملات مستهدفة لزيادة معدلات الإشغال وجذب المستأجرين المثاليين</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="service-title" id="service4-title">إنتاج المحتوى العقاري</h3>
+                    <p class="service-description" id="service4-desc">إنتاج فيديوهات احترافية، جولات افتراضية وصور عالية الجودة للعقارات</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title" id="service5-title">تحليل السوق العقاري</h3>
+                    <p class="service-description" id="service5-desc">دراسات تحليلية معمقة للسوق وتحديد أفضل الاستراتيجيات التسويقية</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="service-title" id="service6-title">توليد العملاء المحتملين</h3>
+                    <p class="service-description" id="service6-desc">أنظمة متطورة لجذب وتأهيل المشترين والمستثمرين الجادين</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title fade-in" id="testimonials-title">شهادات شركائنا من المطورين</h2>
+            <p class="section-subtitle fade-in" id="testimonials-subtitle">اكتشف كيف ساعدنا شركات التطوير العقاري في تحقيق أهدافها البيعية</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text" id="testimonial1">"بفضل Impact Marketing Agency، تمكنا من بيع 80% من وحدات مشروعنا خلال 4 أشهر فقط. فريق محترف ونتائج مذهلة."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">م.س</div>
+                        <div class="author-info">
+                            <h4 id="author1-name">محمد السعيد</h4>
+                            <p id="author1-title">مدير تطوير عقاري</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text" id="testimonial2">"زادت الاستفسارات العقارية لدينا بنسبة 400% وانخفضت تكلفة الحصول على العميل بنسبة 60%. أفضل استثمار تسويقي قمنا به."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">أ.ح</div>
+                        <div class="author-info">
+                            <h4 id="author2-name">أحمد حسن</h4>
+                            <p id="author2-title">مؤسس شركة استثمار عقاري</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text" id="testimonial3">"خبرتهم في السوق العقاري واضحة. استراتيجياتهم التسويقية ساعدتنا في تسريع مبيعات مشروعنا الفاخر."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ل.ع</div>
+                        <div class="author-info">
+                            <h4 id="author3-name">ليلى العتيبي</h4>
+                            <p id="author3-title">مديرة تسويق عقاري</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="case-studies-container">
+            <h2 class="section-title fade-in" id="cases-title">مشاريع عقارية ناجحة</h2>
+            <p class="section-subtitle fade-in" id="cases-subtitle">أمثلة واقعية من حملاتنا التسويقية العقارية الناجحة</p>
+            
+            <div class="case-grid">
+                <div class="case-card fade-in">
+                    <div class="case-image">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="case-content">
+                        <h3 class="case-title" id="case1-title">برج سكني فاخر - دبي</h3>
+                        <p id="case1-desc">حملة متكاملة لتسويق برج سكني من 150 وحدة</p>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-value">85%</div>
+                                <div class="result-label" id="case1-result1">نسبة البيع</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">2000+</div>
+                                <div class="result-label" id="case1-result2">استفسار مؤهل</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">18x</div>
+                                <div class="result-label" id="case1-result3">عائد الاستثمار</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card fade-in">
+                    <div class="case-image">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="case-content">
+                        <h3 class="case-title" id="case2-title">مجمع فلل - أبوظبي</h3>
+                        <p id="case2-desc">استراتيجية تسويقية لمجمع من 80 فيلا فاخرة</p>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-value">70%</div>
+                                <div class="result-label" id="case2-result1">مبيع خلال 6 أشهر</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">1500+</div>
+                                <div class="result-label" id="case2-result2">زيارة ميدانية</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">22x</div>
+                                <div class="result-label" id="case2-result3">عائد الاستثمار</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card fade-in">
+                    <div class="case-image">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="case-content">
+                        <h3 class="case-title" id="case3-title">مركز تجاري - الشارقة</h3>
+                        <p id="case3-desc">حملة لتأجير محلات تجارية في مركز جديد</p>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-value">95%</div>
+                                <div class="result-label" id="case3-result1">نسبة الإشغال</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">800+</div>
+                                <div class="result-label" id="case3-result2">طلب تأجير</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">15x</div>
+                                <div class="result-label" id="case3-result3">عائد الاستثمار</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title fade-in" id="contact-title">ابدأ مشروعك العقاري معنا</h2>
+            <p class="section-subtitle fade-in" id="contact-subtitle">احجز استشارة مجانية واكتشف كيف يمكننا مضاعفة مبيعاتك العقارية</p>
+            
+            <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name" id="form-name">الاسم الكامل</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" id="form-email">البريد الإلكتروني</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" id="form-phone">رقم الهاتف</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="project" id="form-project">نوع المشروع العقاري</label>
+                    <select id="project" name="project" required>
+                        <option value="" id="option-select">اختر نوع المشروع</option>
+                        <option value="residential" id="option-residential">سكني</option>
+                        <option value="commercial" id="option-commercial">تجاري</option>
+                        <option value="villa" id="option-villa">فلل</option>
+                        <option value="apartment" id="option-apartment">شقق</option>
+                        <option value="office" id="option-office">مكاتب</option>
+                        <option value="mixed" id="option-mixed">مختلط</option>
+                        <option value="other" id="option-other">أخرى</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget" id="form-budget">الميزانية التسويقية الشهرية</label>
+                    <select id="budget" name="budget" required>
+                        <option value="" id="budget-select">اختر الميزانية</option>
+                        <option value="5000-10000" id="budget-1">5,000 - 10,000 درهم</option>
+                        <option value="10000-25000" id="budget-2">10,000 - 25,000 درهم</option>
+                        <option value="25000-50000" id="budget-3">25,000 - 50,000 درهم</option>
+                        <option value="50000-100000" id="budget-4">50,000 - 100,000 درهم</option>
+                        <option value="100000+" id="budget-5">أكثر من 100,000 درهم</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" id="form-message">تفاصيل مشروعك العقاري</label>
+                    <textarea id="message" name="message" placeholder="أخبرنا عن مشروعك، الموقع، عدد الوحدات، والأهداف البيعية..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submit-btn">احجز استشارتك المجانية الآن</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Impact Marketing Agency</div>
+            <p id="footer-text">وكالة التسويق الرقمي العقاري الرائدة في المنطقة</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <p id="footer-copy">&copy; 2025 Impact Marketing Agency. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle
+        const translations = {
+            ar: {
+                'lang-text': 'Français',
+                'hero-title': 'الوكالة الرائدة في التسويق العقاري الرقمي',
+                'hero-subtitle': 'نحول مشاريعك العقارية إلى نجاحات استثنائية عبر فيسبوك، جوجل، تيك توك والمنصات الرقمية المتخصصة',
+                'hero-cta': 'احجز استشارتك المجانية الآن',
+                'stat1': 'مشروع عقاري ناجح',
+                'stat2': 'متوسط زيادة الاستفسارات',
+                'stat3': 'درهم مبيعات عقارية',
+                'stat4': 'معدل رضا المطورين',
+                'services-title': 'خدماتنا العقارية المتخصصة',
+                'services-subtitle': 'حلول تسويقية متكاملة مصممة خصيصاً لقطاع العقارات لتحقيق أعلى معدلات البيع والتأجير',
+                'service1-title': 'تسويق المشاريع السكنية',
+                'service1-desc': 'حملات رقمية متكاملة لتسويق المجمعات السكنية والأبراج مع استهداف المشترين المحتملين بدقة',
+                'testimonials-title': 'شهادات شركائنا من المطورين',
+                'testimonials-subtitle': 'اكتشف كيف ساعدنا شركات التطوير العقاري في تحقيق أهدافها البيعية',
+                'contact-title': 'ابدأ مشروعك العقاري معنا',
+                'contact-subtitle': 'احجز استشارة مجانية واكتشف كيف يمكننا مضاعفة مبيعاتك العقارية',
+                'footer-text': 'وكالة التسويق الرقمي العقاري الرائدة في المنطقة'
+            },
+            fr: {
+                'lang-text': 'العربية',
+                'hero-title': 'L\'Agence Leader en Marketing Digital Immobilier',
+                'hero-subtitle': 'Nous transformons vos projets immobiliers en succès exceptionnels via Facebook, Google, TikTok et les plateformes digitales spécialisées',
+                'hero-cta': 'Réservez votre consultation gratuite',
+                'stat1': 'Projets immobiliers réussis',
+                'stat2': 'Augmentation moyenne des demandes',
+                'stat3': 'Dirhams de ventes immobilières',
+                'stat4': 'Taux de satisfaction promoteurs',
+                'services-title': 'Nos Services Immobiliers Spécialisés',
+                'services-subtitle': 'Solutions marketing complètes conçues spécifiquement pour le secteur immobilier pour maximiser les ventes et locations',
+                'service1-title': 'Marketing de Projets Résidentiels',
+                'service1-desc': 'Campagnes digitales complètes pour commercialiser complexes résidentiels et tours avec ciblage précis des acheteurs potentiels',
+                'testimonials-title': 'Témoignages de nos Partenaires Promoteurs',
+                'testimonials-subtitle': 'Découvrez comment nous avons aidé les sociétés de développement immobilier à atteindre leurs objectifs de vente',
+                'contact-title': 'Démarrez Votre Projet Immobilier avec Nous',
+                'contact-subtitle': 'Réservez une consultation gratuite et découvrez comment nous pouvons multiplier vos ventes immobilières',
+                'footer-text': 'Agence de marketing digital immobilier leader dans la région'
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'fr' : 'ar';
+            document.body.className = currentLang === 'fr' ? 'french' : '';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            
+            const trans = translations[currentLang];
+            for (const [id, text] of Object.entries(trans)) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = text;
+                }
+            }
+        }
+
+        // Scroll animations
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = currentLang === 'ar' ? 'جاري الإرسال...' : 'Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert(currentLang === 'ar' ? 'شكراً لك! سنتواصل معك قريباً.' : 'Merci ! Nous vous contactons bientôt.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                event.target.reset();
+            }, 2000);
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                const numericValue = parseInt(target.replace(/[^\d]/g, ''));
+                const suffix = target.replace(/[\d]/g, '');
+                
+                let current = 0;
+                const increment = numericValue / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericValue) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current) + suffix;
+                    }
+                }, 20);
+            });
+        }
+
+        const statsSection = document.querySelector('.stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(statsSection);
+    </script>
+</body>
+</html>
